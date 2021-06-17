@@ -2,19 +2,29 @@ import random
 from statistics import median
 import timeit
 
-orig_list_11 = [random.randint(0, 10) for _ in range(11)]
-orig_list_101 = [random.randint(0, 10) for _ in range(101)]
-#test = [1, 1, 1, 1, 1, 1, 11]
-test = [5, 3, 4, 3, 3, 3, 3]
+
+def create_list(m):
+    return [random.randint(0, 100) for _ in range(2*m + 1)]
+
+
+orig_list_11 = create_list(5)
+orig_list_101 = create_list(50)
 
 def median_search(lst_obj):
     for _ in range(len(lst_obj) // 2):
         lst_obj.remove(max(lst_obj))
     return max(lst_obj)
 
-print(test)
-print('Медиана: ', median_search(test[:]))
-print('Медиана, найденная с помощью встроенной функции:', median(test[:]))
+try:
+    m = int(input('Введите m: '))
+except ValueError:
+    print('Вы ввели не число')
+else:
+    test = create_list(m)
+    print(test)
+    print('Медиана: ', median_search(test[:]))
+    print('Медиана, найденная с помощью встроенной функции:', median(test[:]))
+    print('='*50)
 
 print(orig_list_11)
 sort_lst = orig_list_11[:]
