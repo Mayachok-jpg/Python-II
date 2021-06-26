@@ -22,7 +22,7 @@ def my_min_1(lst_obj): # O(n^2)
     min = lst_obj[0]                     # O(1)
     tmp_min = min                        # O(1)
     for i in lst_obj:                    # O(N)
-        for j in lst_obj:                # O(n^2)
+        for j in lst_obj:                # O(n)
             if i < j :                   # O(1)
                 tmp_min = i              # O(1)
             else:

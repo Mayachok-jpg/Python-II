@@ -18,7 +18,7 @@ def check_1(lst_obj):
     Сложность: O(N).
     """
     lst_to_set = set(lst_obj)  # Из таблицы O(len(...)) -- линейная.
-    return lst_to_set  # Сложность функции равна доминанте суммы операций, тут только одна, значит и здесь линейная
+    return lst_to_set  # O(1)
 
 
 #############################################################################################
@@ -28,12 +28,12 @@ def check_2(lst_obj):
     Проходимся по списку и для каждого элемента проверяем,
     что такой элемент отстутствует
     в оставшихся справа элементах
-    Сложность: O(N).
+    Сложность: O(N^2).
     """
-    for j in range(len(lst_obj)):          # !!! O()
-        if lst_obj[j] in lst_obj[j+1:]:    # !!! O(1)
+    for j in range(len(lst_obj)):          # !!! O(N)
+        if lst_obj[j] in lst_obj[j+1:]:    # !!! O(N)
             return False                   # !!! O(1)
-    return True                            # !!! O(N) + O(1) + O(1)
+    return True                            # !!! O(1)
 
 
 #############################################################################################
@@ -47,9 +47,9 @@ def check_3(lst_obj):
     lst_copy = list(lst_obj)                 # O(N)
     lst_copy.sort()                          # O(N log N)
     for i in range(len(lst_obj) - 1):        # O(N)
-        if lst_copy[i] == lst_copy[i+1]:     # O(N)
-            return False                     # O(N)
-    return True                              # O(N log N) + 4(N)
+        if lst_copy[i] == lst_copy[i+1]:     # O(1)
+            return False                     # O(1)
+    return True                              # O(1)
 
 #############################################################################################
 
